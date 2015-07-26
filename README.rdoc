@@ -3,38 +3,13 @@
 
 首先需要有ruby解析器和搭建rails环境，然后进入项目目录下，输入：rails s或者rails server(后面可以指定监听端口）
 项目代码目录：app存放项目源代码
-		--assets程序的相关资源
-		--controllers  MVC架构的控制器
-		--models  MVC架构的模型
-		--views   MVC架构的视图
-	        --helps   控制器帮助方法
+
+--assets程序的相关资源
+--controllers  MVC架构的控制器
+--models  MVC架构的模型
+--views   MVC架构的视图
+--helps   控制器帮助方法
 
 其他目录为一些项目配置，数据库相关配置目录
-
-	        
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+本地运行: 进入主目录,输入: rails s或rails server即可启动服务器, 然后通过http://localhost:3000访问主页
+部署到heroku上,访问: http://sysu-books-lending.herokuapp.com/
