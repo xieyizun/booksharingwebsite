@@ -1,0 +1,22 @@
+<h1>编辑图书信息</h1>
+<div>
+	<div class="thumbnail", style="border-color:white">
+		<div  style="width:170px; height:200px; overflow:hidden;">
+			<%= link_to image_tag(@product.avatar.url, alt: 'book'),product_path(@product.id) %>
+		</div>
+		<p> 书名: <%= link_to @product.title, product_path(@product.id) %> </p>
+		<p> 图书描述: <%= @product.description %> </p>
+		<p> 上传者: <%= @product.buyer.name %> </p>
+	</div>
+<div>
+	<%= form_for(@product) do |f| %>
+				<p>新书名</p>
+				<%= f.text_field :title ,placeholder: "新书名"%>
+				<p>新图书描述</p>
+				<%= f.text_field :description,:size=>"50", placeholder: "新图书描述 ", :maxlength=>"254" %>
+				</br>
+				</br>
+				<p> <%= f.submit "保存", class: "btn btn-large btn-primary" %></p>
+				<%= render 'shared/error_messages', object: f.object %>
+	<% end %>
+</div>

@@ -1,0 +1,8 @@
+<tr class="active">
+	<td> <%= link_to "#{item.id}", item %> </td>
+	<td> <%= item.product.title %> </td>
+	<td> <%= item.product.buyer.name %> </td>
+	
+	<td> <%= link_to "移除", item, class: "btn btn-default btn-sm",
+			method: :delete, data: {confirm: "You sure?"}, remote: true %> </td>
+</tr>

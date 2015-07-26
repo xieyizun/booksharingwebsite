@@ -1,0 +1,44 @@
+<div id="product_detail">
+	<div class="thumbnail", style="border-color:white">
+			<div  style="width:170px; height:200px; overflow:hidden">
+				<%= link_to image_tag(@product.avatar.url, alt: 'book') %>
+			</div>
+			<p> 书名: <%= @product.title %> </p>
+			<p> 描述: <%= @product.description %> </p>
+			<p> 上传者: <%= @product.buyer.name %> </p>
+			<p> 联系方式: <%= @product.buyer.email %> </p>
+	</div>
+</div>
+<div>
+		<% if sign_in? %>
+			<% if @product.flag == 'y' %>
+		    	<% if create_order? %>
+					<p> <%= button_to "借阅", items_path,class: "btn btn-primary btn-sm" %> </p>
+				<% else %>
+					<p> <%= button_to "创建借阅订单", orders_path, class: "btn btn-primary btn-sm" %> </p>
+				<% end %>
+			<% else %>
+				<p>图书已借出,暂时无法借阅.</p>
+			<% end %>
+		<% else %>
+			<p><%= link_to "登陆", signin_path, class: "btn btn-primary btn-sm"%> </p>
+		<% end %>
+	    </p>
+</div>
+
+<div class="row">
+  <table class="table">
+	  <caption >评论</caption>
+	  <thread>
+		<tr>
+			<th>评论编号</th>
+			<th>用户名</th>
+			<th>分数</th>
+		</tr>
+	  </thread>
+	  <tbody id="show_comments">
+		   <%= render @comments %>
+	  </tbody> 
+  </table> 
+</div>
+<div class="row"> <%= will_paginate @comments%></div>

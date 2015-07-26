@@ -1,0 +1,20 @@
+<nav class="navbar navbar-default" role="navigation">
+   <div class="navbar-header">
+      <a class="navbar-brand" href="#">图书借阅</a>
+   </div>
+   <div class="navbar-form navbar-left">
+      <%= form_tag('/products/search' , method: "get") do %>
+        <p>
+          <%= text_field_tag :query, params[:query] %> 
+          <%= submit_tag "搜索" %>
+        </p>
+      <% end %>  
+    </div>
+</nav>
+
+<div>
+  <div id="home">
+  	<%= render @products %>
+  	<div> <%= will_paginate @products%> </div>
+  </div>
+</div>

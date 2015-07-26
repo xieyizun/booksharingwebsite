@@ -1,0 +1,11 @@
+<div class="row">
+	<p> 用户名: <%= @buyer.name %> </p>
+	<p> 电子邮箱: <%= @buyer.email %> </p>
+	<p style="text-shadow: black 5px 3px 3px;"><%= link_to "编辑用户资料", edit_buyer_path, class:"btn btn-sm btn-default" %></p>
+</div>
+<div id="show_orders" class="row">
+	<%= render @orders %>
+</div>
+
+<div class="row"> <%= will_paginate @orders%></div>
+

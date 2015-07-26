@@ -1,0 +1,32 @@
+<h1>编辑个人资料</h1>
+<div>
+	<p>
+		<button type="button" class="btn btn-default btn-sm" style="text-shadow: black 5px 3px 3px;">
+  			姓名:
+		</button>
+		<%= current_buyer.name %> 
+	</p>
+	<p>
+		<button type="button" class="btn btn-default btn-sm" style="text-shadow: black 5px 3px 3px;">
+  			电子邮箱:
+		</button>
+		<%= current_buyer.email %>
+	</p>
+</div>
+<div>
+	<%= form_for(@buyer) do |f| %>
+					<p>新姓名</p>
+				    <%= f.text_field :name %>
+				    <p>新电子邮箱</p>
+				    <%= f.text_field :email %>
+					<p>新密码</p>
+				    <%= f.password_field :password %> 
+					<p>新密码确认</p>
+				    <%= f.password_field :password_confirmation %> 
+				</br>
+				</br>
+					<p> <%= f.submit "保存", class: "btn btn-large btn-primary" %>
+					</p>
+				<%= render 'shared/error_messages', object: f.object %>
+	<% end %>
+</div>

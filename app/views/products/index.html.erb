@@ -1,0 +1,20 @@
+<div>
+	<table class="table">
+		<caption>搜索结果</caption>
+		<thread>
+			<tr>
+				<th>书名</th>
+				<th>描述</th>
+			</tr>
+		</thread>
+	
+		<tbody>
+			<% @goodsongs.each do |goodsong| %>
+				<tr class="active">
+					<th><%= link_to goodsong.title, goodsong %></th>
+					<th><%= goodsong.description %></th>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,54 @@
+<p>书单编号: <%= @item.order_id %> </p>
+<div class="thumbnail">
+	<div style="width:170px; height:200px; overflow:hidden">
+		<%= link_to image_tag(@item.product.avatar), @item.product %>
+	</div>
+</div>
+<p>书名: <%= link_to "#{@product.title}", @product %></p>
+<p>上传者: <%= @product.buyer.name %> </p>
+</br>
+<% if @item.commentable == true and (current_order.nil? or current_order.id != @item.order_id) %>
+ 	<%= form_for(@comment) do |f| %>
+  		<p class="hidden">
+			<%= f.label :product_id, @product.id %>
+			<%= f.radio_button :product_id, @product.id %>
+  		</p>
+  		<p class="hidden">
+  			<%= f.label :buyer_id, current_buyer.id %>
+  			<%= f.radio_button :buyer_id, current_buyer.id %>
+  		</p>
+  		<p class="hidden">
+  			<%= f.label :item_id, @item.id %>
+  			<%= f.radio_button :item_id, @item.id %>
+  		</p>
+		<%= f.label :score, 5 %>
+		<%= f.radio_button :score, 5 %>
+		<%= f.label :score, 4 %>
+		<%= f.radio_button :score, 4 %>
+		<%= f.label :score, 3 %>
+		<%= f.radio_button :score, 3 %>
+		<%= f.label :score, 2 %>
+		<%= f.radio_button :score, 2 %>
+		<%= f.label :score, 1 %>
+		<%= f.radio_button :score, 1 %>
+ 	</br>
+		<%= f.submit "评分并归还", class: "btn btn-primary btn-sm" %>
+   <% end %>
+<% else %>
+	<div class="row">
+  		<table class="table">
+	  		<caption >评论</caption>
+	  		<thread>
+				<tr>
+					<th>评论编号</th>
+					<th>用户名</th>
+					<th>分数</th>
+				</tr>
+	  		</thread>
+	  		<tbody id="show_comments">
+		   		<%= render @product.comments %>
+	  		</tbody> 
+  		</table> 
+	</div>
+
+<% end %>

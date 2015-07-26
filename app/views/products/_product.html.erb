@@ -1,0 +1,11 @@
+<div class="col-sm-6 col-md-3">
+	<div class="thumbnail">
+		<div  style="width:170px; height:200px; overflow:hidden">
+			<%= link_to image_tag(product.avatar.url, alt: 'book'),product_path(product.id) %>
+		</div>
+		<p> 书名: <%= link_to product.title, product_path(product.id) %> </p>
+		<p> 描述: <%= product.description %> </p>
+		<p> 上传者: <%= product.buyer.name %> </p>
+	</div>
+</div>
+

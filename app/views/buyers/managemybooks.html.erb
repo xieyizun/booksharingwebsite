@@ -1,0 +1,24 @@
+<h1>管理我的图书</h1>
+<div id="myproducts">
+  <% current_buyer.products.paginate(page: params[:page]).each do |product| %>
+  	<div class="col-sm-6 col-md-3">
+  		<div class="thumbnail", style="border-color:white">
+  			<div  style="width:170px; height:200px; overflow:hidden">
+			<%= link_to image_tag(product.avatar.url, alt: 'book'),product_path(product.id) %>
+			</div>
+			<p> 书名: <%= link_to product.title, product_path(product.id) %> </p>
+			<p> 描述: <%= product.description %> </p>
+			<p> 上传者: <%= product.buyer.name %> </p>
+			<p>
+  				<%= link_to "修改", edit_product_path(product), class: "btn btn-large btn-primary" %>
+				<% if product.flag == 'y' %>
+					<%= form_for(product, html: {method: :delete}) do |f| %>
+						<%= f.submit "删除", class: "btn btn-large btn-primary", data: {confirm: "确定?"} %> 
+					<% end %>
+				<% end %>
+			</p>
+  			<div> <%= will_paginate @mybooks%> </div>
+  		</div>
+  	</div>
+  <% end %>
+</div>

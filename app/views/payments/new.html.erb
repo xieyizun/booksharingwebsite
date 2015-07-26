@@ -1,0 +1,27 @@
+<h1> 借阅图书 </h1>
+<div class="row">
+	<% if create_order? %>		
+			<table class="table">
+				<caption>书单: <%= current_order.id %> |
+					状态: <%= current_order.status %>
+				</caption>
+				<thread>
+				<tr>
+					<th>编号</th>
+					<th>书名</th>
+					<th>上传者</th>
+					
+					<% if current_order.status == "UnAdded" %>
+						<th>操作</th>
+					<% end %>
+				</tr>
+				</thread>
+				<tbody id="show_items">
+					<%= render current_order.items %>
+				</tbody>
+			</table> 
+			<%= form_for(:payments, url:payments_path) do |f| %>
+				<%= f.submit "确认借阅", class:"btn btn-large btn-primary",data: {confirm: "Are you sure?"} %>
+			<% end %>
+	<% end %>
+</div>
